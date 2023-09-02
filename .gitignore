@@ -71,7 +71,6 @@ crashlytics-build.properties
 .idea
 *.DotSettings
 
-# UserSettings
-UserSettings
- 
+
+/[Uu]ser[Ss]ettings/
 
