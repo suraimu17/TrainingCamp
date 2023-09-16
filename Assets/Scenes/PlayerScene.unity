@@ -888,8 +888,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7634844f887a2e40ac700ef8f4de24e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  playermove: {fileID: 0}
+  rigidbody: {fileID: 1437727510}
+  playermove: {fileID: 1437727514}
 --- !u!50 &1437727510
 Rigidbody2D:
   serializedVersion: 4

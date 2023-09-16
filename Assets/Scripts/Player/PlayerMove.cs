@@ -4,28 +4,15 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    public void Move(Rigidbody2D rb)
+    public void Move(Rigidbody2D rigidbody)
     {
         if (Input.GetKey(KeyCode.D))
         {
-            rb.velocity = new Vector2(7f, rb.velocity.y);
+            rigidbody.velocity = new Vector2(7f, rigidbody.velocity.y);
         }
         if (Input.GetKey(KeyCode.A))
         {
-            rb.velocity = new Vector2(-7f, rb.velocity.y);
+            rigidbody.velocity = new Vector2(-7f, rigidbody.velocity.y);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
