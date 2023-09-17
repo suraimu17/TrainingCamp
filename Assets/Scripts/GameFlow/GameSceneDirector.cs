@@ -34,19 +34,7 @@ namespace GameFlow
         private async UniTask ClearActionAsync()
         {
             clearTab.SetActive(true);
-            var token = playerTransform.gameObject.GetCancellationTokenOnDestroy();
-            await GoalAnimationAsync(token);
         }
 
-        private async UniTask GoalAnimationAsync(CancellationToken token)
-        {
-            Debug.Log("Goal");
-            await UniTask.WaitUntil(() =>
-            {
-                var direction = transform.position - playerTransform.position;
-                playerTransform.position += direction.normalized * MoveToGoalAnimationSpeed;
-                return Vector3.Distance(playerTransform.position, transform.position) < 0.05f;
-            },cancellationToken : token);
-        }
     }
 }

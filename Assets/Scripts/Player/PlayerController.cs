@@ -1,4 +1,5 @@
 using System;
+using GameFlow;
 using Tags;
 using TanidaPlayers;
 using UnityEngine;
@@ -24,6 +25,7 @@ public class PlayerController : MonoBehaviour,IPlayer
     public bool RightWall = false;
     private Vector2 playerpos;
 
+    private GameSceneDirector gameSceneDirector;
     private void Awake()
     {
         Application.targetFrameRate = 60;
@@ -34,11 +36,16 @@ public class PlayerController : MonoBehaviour,IPlayer
 
     private void Start()
     {
+        gameSceneDirector = FindObjectOfType<GameSceneDirector>();
         beforeFramePosition = transform.position;
     }
 
     void Update()
     {
+        if (gameSceneDirector.IsGoal)
+        {
+            return;
+        }
         if (Input.GetKeyDown(KeyCode.Space) && isJump)
         {
             Jump();
