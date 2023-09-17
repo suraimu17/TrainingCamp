@@ -41,7 +41,6 @@ public class PlayerController : MonoBehaviour,IPlayer
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
         if (collision.gameObject.layer == 7)
         {
             isJump = true;
