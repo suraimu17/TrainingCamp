@@ -13,6 +13,8 @@ namespace GameFlow
         [SerializeField] private GoalController goalController;
         private PlayerController playerController;
         private Transform playerTransform;
+        public bool IsGoal { get; private set; } = false;
+
         private void Start()
         {
             playerController = FindObjectOfType<PlayerController>();
@@ -22,6 +24,7 @@ namespace GameFlow
                 .Take(1)
                 .Subscribe(_ =>
                 {
+                    IsGoal = true;
                     ClearActionAsync().Forget();
                 }).AddTo(this);
         }
