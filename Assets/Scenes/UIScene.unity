@@ -17415,7 +17415,6 @@ GameObject:
   - component: {fileID: 1195814371}
   - component: {fileID: 1195814370}
   - component: {fileID: 1195814369}
-  - component: {fileID: 1195814373}
   - component: {fileID: 1195814374}
   m_Layer: 5
   m_Name: Canvas
@@ -17508,18 +17507,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1195814373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1195814368}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96c4679d9c335fb4ab6d273ede6dbaff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1195814374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17527,7 +17514,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1195814368}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee6d0c1ba78033442b6a30292fa4130e, type: 3}
   m_Name: 
@@ -22282,6 +22269,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5058170721865900024, guid: c4e4fc36d1fd4462fa75fc248755193c, type: 3}
+      propertyPath: playercontroller
+      value: 
+      objectReference: {fileID: 222837275}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4e4fc36d1fd4462fa75fc248755193c, type: 3}
 --- !u!1001 &5360450694291166848
