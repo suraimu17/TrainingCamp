@@ -8,10 +8,10 @@ public class PlayerController : MonoBehaviour,IPlayer
     public Rigidbody2D rigidbody;
     private bool isJump = false;
     public PlayerMove playermove;
-    private int hp = 3;
+    public int hp = 3;
     private const int MaxHp = 5;
     private const int MinHp = 0;
-    private int possibleDoubleJumpCount = 0; //ダブルジャンプ可能な回数
+    public int possibleDoubleJumpCount = 0; //ダブルジャンプ可能な回数
     private bool BeforeJump = false;
     
     private void Awake()
