@@ -9,8 +9,12 @@ namespace Enemies
         [SerializeField] private float AmountOfMovementInYDirection;    //y軸方向の移動量
         [SerializeField] private float xSpeed;
         [SerializeField] private float ySpeed;
-        
 
+        private Vector2 currentEnemyPos;
+        private void Start()
+        {
+            currentEnemyPos = transform.localPosition;
+        }
         private void Update()
         {
             float xValue = 0;
@@ -24,7 +28,10 @@ namespace Enemies
             {
                 yValue = Mathf.PingPong(Time.time * ySpeed, AmountOfMovementInYDirection);
             }
-            transform.localPosition = new Vector3(xValue, yValue, 0);
+            currentEnemyPos = transform.localPosition;
+            currentEnemyPos = transform.localPosition;
+            transform.localPosition = new Vector3(currentEnemyPos.x+xValue, currentEnemyPos.y+yValue, 0);
+            
         }
     }
 }
