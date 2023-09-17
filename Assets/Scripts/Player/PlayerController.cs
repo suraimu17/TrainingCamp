@@ -13,7 +13,9 @@ public class PlayerController : MonoBehaviour,IPlayer
     private const int MinHp = 0;
     public int possibleDoubleJumpCount = 0; //ダブルジャンプ可能な回数
     private bool BeforeJump = false;
-    
+    public bool LeftWall = false;
+    public bool RightWall = false;
+
     private void Awake()
     {
         Application.targetFrameRate = 60;
@@ -41,11 +43,23 @@ public class PlayerController : MonoBehaviour,IPlayer
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == 7)
+        Vector2 groundpos = collision.GetContact(0).point;
+        if (collision.gameObject.layer == 7 && transform.position.y - groundpos.y - 0.65 > 0)
         {
             isJump = true;
             BeforeJump = false;
         }
+        else if(transform.position.x > groundpos.x)
+        {
+            LeftWall = true;
+            RightWall = false;
+        }
+        else
+        {
+            RightWall = true;
+            LeftWall = false;
+        }
+        
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -54,6 +68,8 @@ public class PlayerController : MonoBehaviour,IPlayer
         {
             isJump = false;
         }
+        RightWall = false;
+        LeftWall = false;
     }
 
     public void Jump()
