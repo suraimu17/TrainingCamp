@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour,IPlayer
     private bool BeforeJump = false;
     public bool LeftWall = false;
     public bool RightWall = false;
+    private Vector2 playerpos;
 
     private void Awake()
     {
@@ -52,12 +53,18 @@ public class PlayerController : MonoBehaviour,IPlayer
         else if(transform.position.x > groundpos.x)
         {
             LeftWall = true;
+            Debug.Log("left");
             RightWall = false;
+            Debug.Log("noright");
+            playerpos = transform.position;
         }
         else
         {
             RightWall = true;
+            Debug.Log("right");
             LeftWall = false;
+            Debug.Log("noleft");
+            playerpos = transform.position;
         }
         
     }
@@ -68,8 +75,17 @@ public class PlayerController : MonoBehaviour,IPlayer
         {
             isJump = false;
         }
-        RightWall = false;
-        LeftWall = false;
+        
+        if(RightWall && transform.position.x != playerpos.x)
+        {
+            RightWall = false;
+            Debug.Log("noright");
+        }
+        if (LeftWall && transform.position.x != playerpos.x)
+        {
+            LeftWall = false;
+            Debug.Log("noleft");
+        }
     }
 
     public void Jump()
