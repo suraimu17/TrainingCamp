@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class SelectStage : MonoBehaviour
+public class LoadSceneButton : MonoBehaviour
 {
     [SerializeField] string stageName;
     private Button button;
