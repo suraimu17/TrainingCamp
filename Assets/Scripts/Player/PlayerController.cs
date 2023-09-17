@@ -62,6 +62,14 @@ public class PlayerController : MonoBehaviour,IPlayer
             BeforeJump = true;
         }
 
+        /*if(transform.position.x != playerpos.x)
+        {
+            RightWall = false;
+            Debug.Log("noright");
+            LeftWall = false;
+            Debug.Log("noleft");
+        }*/
+
         //isFalling = SetIsFalling();
         playermove.Move(rigidbody);
         MoveAnimation();
@@ -120,7 +128,8 @@ public class PlayerController : MonoBehaviour,IPlayer
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Vector2 groundpos = collision.GetContact(0).point;
-        if (collision.gameObject.layer == 7 && transform.position.y - groundpos.y - 0.65 > 0)
+        //if(collision.gameObject.layer == 7 && transform.position.y)
+        if (collision.gameObject.layer == 7 && transform.position.y - groundpos.y - 0.8 > 0)
         {
             isJump = true;
             isJumping = false;
@@ -130,16 +139,16 @@ public class PlayerController : MonoBehaviour,IPlayer
         {
             LeftWall = true;
             Debug.Log("left");
-            RightWall = false;
-            Debug.Log("noright");
+            /*RightWall = false;
+            Debug.Log("noright");*/
             playerpos = transform.position;
         }
         else
         {
             RightWall = true;
             Debug.Log("right");
-            LeftWall = false;
-            Debug.Log("noleft");
+            /*LeftWall = false;
+            Debug.Log("noleft");*/
             playerpos = transform.position;
         }
         
@@ -153,12 +162,12 @@ public class PlayerController : MonoBehaviour,IPlayer
             isJumping = true;
         }
         
-        if(RightWall && transform.position.x != playerpos.x)
+        if(RightWall/* && transform.position.x != playerpos.x*/)
         {
             RightWall = false;
             Debug.Log("noright");
         }
-        if (LeftWall && transform.position.x != playerpos.x)
+        if (LeftWall/* && transform.position.x != playerpos.x*/)
         {
             LeftWall = false;
             Debug.Log("noleft");
