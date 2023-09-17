@@ -79,14 +79,14 @@ public class PlayerController : MonoBehaviour,IPlayer
         {
             transform.localScale =
                 new Vector3(Mathf.Abs(transform.localScale.x) * -1, transform.localScale.y, transform.localScale.z);
-            Debug.Log($"Push A");
+            //Debug.Log($"Push A");
         }
 
         if (Input.GetKey(KeyCode.D))
         {
             transform.localScale =
                 new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-            Debug.Log($"Push D");
+            //Debug.Log($"Push D");
         }
 
         
