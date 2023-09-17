@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b1810e74e3b9114898c58419d2825d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageName: UIScene
+  stageName: 
 --- !u!1 &5390808333547105674
 GameObject:
   m_ObjectHideFlags: 0
