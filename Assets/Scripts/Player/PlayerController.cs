@@ -8,11 +8,9 @@ public class PlayerController : MonoBehaviour,IPlayer
     public Rigidbody2D rigidbody;
     private bool isJump = false;
     public PlayerMove playermove;
-    private int hp = 3;
+    public int hp = 3;
     private const int MaxHp = 5;
     private const int MinHp = 0;
-    private int possibleDoubleJumpCount = 0; //ダブルジャンプ可能な回数
-
     private Animator playerAnimator;
     private bool isJumping;
     private bool isFalling;
@@ -20,6 +18,9 @@ public class PlayerController : MonoBehaviour,IPlayer
     private bool isIdle;
 
     private Vector3 beforeFramePosition;
+    public int possibleDoubleJumpCount = 0; //ダブルジャンプ可能な回数
+    private bool BeforeJump = false;
+    
     private void Awake()
     {
         Application.targetFrameRate = 60;
@@ -38,6 +39,15 @@ public class PlayerController : MonoBehaviour,IPlayer
         if (Input.GetKeyDown(KeyCode.Space) && isJump)
         {
             Jump();
+            Debug.Log("jump");
+        }
+        if (Input.GetKeyDown(KeyCode.Space) && possibleDoubleJumpCount > 0 && !BeforeJump && !isJump)
+        {
+            rigidbody.velocity = new Vector2(rigidbody.velocity.x, 0);
+            Jump();
+            Debug.Log("count");
+            possibleDoubleJumpCount--;
+            BeforeJump = true;
         }
 
         //isFalling = SetIsFalling();
@@ -94,6 +104,7 @@ public class PlayerController : MonoBehaviour,IPlayer
         {
             isJump = true;
             isJumping = false;
+            BeforeJump = false;
         }
     }
 
@@ -109,8 +120,6 @@ public class PlayerController : MonoBehaviour,IPlayer
     public void Jump()
     {
         rigidbody.AddForce(new Vector2(0, 1000));
-        Debug.Log("jump");
-
     }
     
     public void Heal(int value = 1)
@@ -128,6 +137,7 @@ public class PlayerController : MonoBehaviour,IPlayer
     public void IncreasePossibleDoubleJumpCount(int value = 1)
     {
         possibleDoubleJumpCount += value;
+        Debug.Log("item");
     }
     
     private void OnTriggerEnter2D(Collider2D collider2D)

@@ -5,18 +5,17 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     [SerializeField] private PlayerController playercontroller;
+    [SerializeField] private float startPosY;
+    [SerializeField] private float endPosY;
+
     private Transform playertransform;
-    // Start is called before the first frame update
-    void Start()
+
+    // Update is called once per frame
+    private void Update()
     {
         playertransform = playercontroller.transform;
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if(playertransform == null)
+        if (playertransform == null||playertransform.position.y<=startPosY||playertransform.position.y>=endPosY)
         {
             return;
         }
