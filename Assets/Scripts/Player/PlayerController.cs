@@ -3,6 +3,7 @@ using GameFlow;
 using Tags;
 using TanidaPlayers;
 using UnityEngine;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour,IPlayer
 {
@@ -26,6 +27,9 @@ public class PlayerController : MonoBehaviour,IPlayer
     private Vector2 playerpos;
 
     private GameSceneDirector gameSceneDirector;
+    private bool isDamage = false;
+    public SpriteRenderer sp;
+
     private void Awake()
     {
         Application.targetFrameRate = 60;
@@ -38,6 +42,7 @@ public class PlayerController : MonoBehaviour,IPlayer
     {
         gameSceneDirector = FindObjectOfType<GameSceneDirector>();
         beforeFramePosition = transform.position;
+        sp = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -45,6 +50,11 @@ public class PlayerController : MonoBehaviour,IPlayer
         if (gameSceneDirector.IsGoal)
         {
             return;
+        }
+
+        if(hp == 0)
+        {
+            gameObject.SetActive(false);
         }
         if (Input.GetKeyDown(KeyCode.Space) && isJump)
         {
@@ -63,6 +73,13 @@ public class PlayerController : MonoBehaviour,IPlayer
         //isFalling = SetIsFalling();
         playermove.Move(rigidbody);
         MoveAnimation();
+
+        if (isDamage)
+        {
+            float level = Mathf.Abs(Mathf.Sin(Time.time * 10));
+            sp.color = new Color(1f, 1f, 1f, level);
+        }
+
     }
     public void MoveAnimation()
     {
@@ -171,6 +188,14 @@ public class PlayerController : MonoBehaviour,IPlayer
     {
         var tmp = hp - value;
         hp = Math.Max(tmp, MinHp);
+        isDamage = true;
+    }
+
+    public IEnumerator OnDamage()
+    {
+        yield return new WaitForSeconds(2);
+        isDamage = false;
+        sp.color = new Color(1f, 1f, 1f, 1f);
     }
 
     public void IncreasePossibleDoubleJumpCount(int value = 1)
@@ -181,9 +206,15 @@ public class PlayerController : MonoBehaviour,IPlayer
     
     private void OnTriggerEnter2D(Collider2D collider2D)
     {
+        if (isDamage)
+        {
+            return;
+        }
         if (collider2D.gameObject.CompareTag(GameTags.Enemy.ToString()))
         {
             Damage(1);
+            Debug.Log("damage");
+            StartCoroutine(OnDamage());
         }
     }
 }
