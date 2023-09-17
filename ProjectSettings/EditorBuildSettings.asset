@@ -12,6 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/StageSelectScene.unity
     guid: e5e27627aeeac89419b1f173197e4144
   - enabled: 1
+    path: Assets/Scenes/Stage1.unity
+    guid: 36e02a5137441f64ca77deaa862b835f
+  - enabled: 1
+    path: Assets/Scenes/Stage2.unity
+    guid: 32d92dd435724e047a9dd59121786b34
+  - enabled: 1
     path: Assets/Scenes/UIScene.unity
     guid: 875d6f29fbd677941826e817cdecf490
   - enabled: 1

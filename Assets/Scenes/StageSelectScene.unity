@@ -181,7 +181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Stage1
+  m_text: Stage2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 76960479c44aa1d42a00777c37cf8960, type: 2}
   m_sharedMaterial: {fileID: 875235763896684059, guid: 76960479c44aa1d42a00777c37cf8960, type: 2}
@@ -446,7 +446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b1810e74e3b9114898c58419d2825d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageName: UIScene
+  stageName: Stage1
 --- !u!114 &1121388430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -726,7 +726,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b1810e74e3b9114898c58419d2825d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageName: 
+  stageName: Stage2
 --- !u!114 &1937160599
 MonoBehaviour:
   m_ObjectHideFlags: 0
