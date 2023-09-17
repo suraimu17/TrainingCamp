@@ -39,10 +39,15 @@ public class PlayerController : MonoBehaviour,IPlayer
     private void Start()
     {
         beforeFramePosition = transform.position;
+        sp = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
+        if(hp == 0)
+        {
+            gameObject.SetActive(false);
+        }
         if (Input.GetKeyDown(KeyCode.Space) && isJump)
         {
             Jump();
@@ -66,6 +71,7 @@ public class PlayerController : MonoBehaviour,IPlayer
             float level = Mathf.Abs(Mathf.Sin(Time.time * 10));
             sp.color = new Color(1f, 1f, 1f, level);
         }
+
     }
     public void MoveAnimation()
     {
@@ -199,6 +205,7 @@ public class PlayerController : MonoBehaviour,IPlayer
         if (collider2D.gameObject.CompareTag(GameTags.Enemy.ToString()))
         {
             Damage(1);
+            Debug.Log("damage");
             StartCoroutine(OnDamage());
         }
     }
