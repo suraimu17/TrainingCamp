@@ -10,10 +10,17 @@ namespace Enemies
         [SerializeField] private float xSpeed;
         [SerializeField] private float ySpeed;
 
+        private Vector3 beforeFramePosition;
         private Vector2 currentEnemyPos;
+
+        private Animator enemyAnimator;
+
+
         private void Start()
         {
+            beforeFramePosition = transform.localPosition;
             currentEnemyPos = transform.localPosition;
+            enemyAnimator = GetComponent<Animator>();
         }
         private void Update()
         {
@@ -28,8 +35,19 @@ namespace Enemies
             {
                 yValue = Mathf.PingPong(Time.time * ySpeed, AmountOfMovementInYDirection);
             }
-            currentEnemyPos = transform.localPosition;
-            currentEnemyPos = transform.localPosition;
+            
+            if (transform.localPosition.x - beforeFramePosition.x >= 0)
+            {
+                transform.localScale =
+                    new Vector3(Math.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            }
+            else
+            {
+                transform.localScale =
+                    new Vector3(Math.Abs(transform.localScale.x)*-1, transform.localScale.y, transform.localScale.z);
+            }
+            
+            beforeFramePosition = transform.localPosition;
             transform.localPosition = new Vector3(currentEnemyPos.x+xValue, currentEnemyPos.y+yValue, 0);
             
         }
