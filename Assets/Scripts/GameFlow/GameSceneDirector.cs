@@ -9,7 +9,6 @@ namespace GameFlow
     public class GameSceneDirector : MonoBehaviour
     {
         [SerializeField] private float MoveToGoalAnimationSpeed = 0.01f;   //ゴールに近づくときの移動スピード
-        
         [SerializeField] private GoalController goalController;
         private PlayerController playerController;
         private Transform playerTransform;
