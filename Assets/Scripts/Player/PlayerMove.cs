@@ -10,9 +10,13 @@ public class PlayerMove : MonoBehaviour
         {
             rigidbody.velocity = new Vector2(7f, rigidbody.velocity.y);
         }
-        if (Input.GetKey(KeyCode.A))
+        else if (Input.GetKey(KeyCode.A))
         {
             rigidbody.velocity = new Vector2(-7f, rigidbody.velocity.y);
+        }
+        else
+        {
+            rigidbody.velocity = new Vector2(0, rigidbody.velocity.y);
         }
     }
 }
