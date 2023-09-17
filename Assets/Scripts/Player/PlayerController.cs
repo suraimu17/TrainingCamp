@@ -142,6 +142,7 @@ public class PlayerController : MonoBehaviour,IPlayer
             isJump = true;
             isJumping = false;
             BeforeJump = false;
+            Debug.Log("ground");
         }
         else if(transform.position.x > groundpos.x)
         {
