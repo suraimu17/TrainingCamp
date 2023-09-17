@@ -1,4 +1,5 @@
 using System;
+using GameFlow;
 using Tags;
 using TanidaPlayers;
 using UnityEngine;
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour,IPlayer
     public bool RightWall = false;
     private Vector2 playerpos;
 
+    private GameSceneDirector gameSceneDirector;
     private bool isDamage = false;
     public SpriteRenderer sp;
 
@@ -38,12 +40,18 @@ public class PlayerController : MonoBehaviour,IPlayer
 
     private void Start()
     {
+        gameSceneDirector = FindObjectOfType<GameSceneDirector>();
         beforeFramePosition = transform.position;
         sp = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
+        if (gameSceneDirector.IsGoal)
+        {
+            return;
+        }
+
         if(hp == 0)
         {
             gameObject.SetActive(false);
