@@ -18519,11 +18519,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5058170721865900023, guid: c4e4fc36d1fd4462fa75fc248755193c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5058170721865900023, guid: c4e4fc36d1fd4462fa75fc248755193c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.82
+      value: -3.6
       objectReference: {fileID: 0}
     - target: {fileID: 5058170721865900023, guid: c4e4fc36d1fd4462fa75fc248755193c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -18561,5 +18561,9 @@ PrefabInstance:
       propertyPath: playercontroller
       value: 
       objectReference: {fileID: 222837275}
+    - target: {fileID: 5058170721865900025, guid: c4e4fc36d1fd4462fa75fc248755193c, type: 3}
+      propertyPath: RightWall
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4e4fc36d1fd4462fa75fc248755193c, type: 3}
