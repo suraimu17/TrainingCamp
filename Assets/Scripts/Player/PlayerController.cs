@@ -11,6 +11,13 @@ public class PlayerController : MonoBehaviour,IPlayer
     public int hp = 3;
     private const int MaxHp = 5;
     private const int MinHp = 0;
+    private Animator playerAnimator;
+    private bool isJumping;
+    private bool isFalling;
+    private bool isWalking;
+    private bool isIdle;
+
+    private Vector3 beforeFramePosition;
     public int possibleDoubleJumpCount = 0; //ダブルジャンプ可能な回数
     private bool BeforeJump = false;
     public bool LeftWall = false;
@@ -21,6 +28,12 @@ public class PlayerController : MonoBehaviour,IPlayer
         Application.targetFrameRate = 60;
         playermove = GetComponent<PlayerMove>();
         rigidbody = GetComponent<Rigidbody2D>();
+        playerAnimator = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+        beforeFramePosition = transform.position;
     }
 
     void Update()
@@ -38,7 +51,53 @@ public class PlayerController : MonoBehaviour,IPlayer
             possibleDoubleJumpCount--;
             BeforeJump = true;
         }
+
+        //isFalling = SetIsFalling();
         playermove.Move(rigidbody);
+        MoveAnimation();
+    }
+    public void MoveAnimation()
+    {
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.localScale =
+                new Vector3(Mathf.Abs(transform.localScale.x) * -1, transform.localScale.y, transform.localScale.z);
+            Debug.Log($"Push A");
+        }
+
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.localScale =
+                new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            Debug.Log($"Push D");
+        }
+
+        
+        isWalking = Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D);
+        isIdle = !isWalking && !isJumping && !isFalling;
+        
+        playerAnimator.SetBool(PlayerAnimatorFrag.IsJumping.ToString(),isJumping);
+        playerAnimator.SetBool(PlayerAnimatorFrag.IsWalking.ToString(),isWalking);
+        playerAnimator.SetBool(PlayerAnimatorFrag.IsFalling.ToString(),isFalling);
+        playerAnimator.SetBool(PlayerAnimatorFrag.IsIdle.ToString(),isIdle);
+    }
+
+    private bool SetIsFalling()
+    {
+        if (!isJumping)
+        {
+            beforeFramePosition = transform.position;
+            return false;
+        }
+
+        if (transform.position.y <= beforeFramePosition.y)
+        {
+            beforeFramePosition = transform.position;
+            return true;
+        }
+
+        beforeFramePosition = transform.position;
+        return false;
     }
     
     private void OnCollisionEnter2D(Collision2D collision)
@@ -47,6 +106,7 @@ public class PlayerController : MonoBehaviour,IPlayer
         if (collision.gameObject.layer == 7 && transform.position.y - groundpos.y - 0.65 > 0)
         {
             isJump = true;
+            isJumping = false;
             BeforeJump = false;
         }
         else if(transform.position.x > groundpos.x)
@@ -67,6 +127,7 @@ public class PlayerController : MonoBehaviour,IPlayer
         if (collision.gameObject.layer == 7)
         {
             isJump = false;
+            isJumping = true;
         }
         RightWall = false;
         LeftWall = false;
@@ -102,5 +163,13 @@ public class PlayerController : MonoBehaviour,IPlayer
             Damage(1);
         }
     }
-
 }
+
+public enum PlayerAnimatorFrag
+{
+    IsJumping,
+    IsWalking,
+    IsFalling,
+    IsIdle,
+}
+
