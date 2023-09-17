@@ -7,12 +7,14 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
 {
     [SerializeField] AudioClip buttonSE;
 
-    private AudioSource audioSource;
+    public AudioSource audioSource;
+    static public float soundVolume = 1f;
 
     // Start is called before the first frame update
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        audioSource.volume = soundVolume;
     }
 
     public void PlaySE()
