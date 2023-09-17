@@ -21537,6 +21537,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: throughFloor (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1236224973659038627, guid: df164e6733664c74282d3bd8ba7cad50, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1236224973659038636, guid: df164e6733664c74282d3bd8ba7cad50, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -21593,6 +21597,10 @@ PrefabInstance:
     - target: {fileID: 1236224973659038624, guid: df164e6733664c74282d3bd8ba7cad50, type: 3}
       propertyPath: m_Name
       value: throughFloor
+      objectReference: {fileID: 0}
+    - target: {fileID: 1236224973659038627, guid: df164e6733664c74282d3bd8ba7cad50, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1236224973659038636, guid: df164e6733664c74282d3bd8ba7cad50, type: 3}
       propertyPath: m_RootOrder
