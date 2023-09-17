@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    public PlayerController playercontroller;
     public void Move(Rigidbody2D rigidbody)
     {
-        if (Input.GetKey(KeyCode.D) && transform.position.x <= 8.683)
+        if (Input.GetKey(KeyCode.D) && !playercontroller.RightWall)
         {
             rigidbody.velocity = new Vector2(7f, rigidbody.velocity.y);
         }
-        else if (Input.GetKey(KeyCode.A) && transform.position.x >= -9.283)
+            
+        else if (Input.GetKey(KeyCode.A) && !playercontroller.LeftWall)
         {
             rigidbody.velocity = new Vector2(-7f, rigidbody.velocity.y);
+
         }
         else
         {
