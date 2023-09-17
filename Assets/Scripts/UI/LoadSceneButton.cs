@@ -18,6 +18,12 @@ public class LoadSceneButton : MonoBehaviour
 
     private void LoadScene()
     {
+        SoundManager.Instance.PlaySE();
+        Invoke("Load", 0.8f);
+    }
+
+    private void Load()
+    {
         SceneManager.LoadScene(stageName);
     }
 }
