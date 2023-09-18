@@ -70,6 +70,14 @@ public class PlayerController : MonoBehaviour,IPlayer
             BeforeJump = true;
         }
 
+        /*if(transform.position.x != playerpos.x)
+        {
+            RightWall = false;
+            Debug.Log("noright");
+            LeftWall = false;
+            Debug.Log("noleft");
+        }*/
+
         //isFalling = SetIsFalling();
         playermove.Move(rigidbody);
         MoveAnimation();
@@ -87,14 +95,14 @@ public class PlayerController : MonoBehaviour,IPlayer
         {
             transform.localScale =
                 new Vector3(Mathf.Abs(transform.localScale.x) * -1, transform.localScale.y, transform.localScale.z);
-            Debug.Log($"Push A");
+            //Debug.Log($"Push A");
         }
 
         if (Input.GetKey(KeyCode.D))
         {
             transform.localScale =
                 new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-            Debug.Log($"Push D");
+            //Debug.Log($"Push D");
         }
 
         
@@ -110,26 +118,28 @@ public class PlayerController : MonoBehaviour,IPlayer
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Vector2 groundpos = collision.GetContact(0).point;
-        if (collision.gameObject.layer == 7 && transform.position.y - groundpos.y - 0.65 > 0)
+        //if(collision.gameObject.layer == 7 && transform.position.y)
+        if (collision.gameObject.layer == 7 && transform.position.y - groundpos.y - 0.8 > 0)
         {
             isJump = true;
             isJumping = false;
             BeforeJump = false;
+            Debug.Log("ground");
         }
         else if(transform.position.x > groundpos.x)
         {
             LeftWall = true;
             Debug.Log("left");
-            RightWall = false;
-            Debug.Log("noright");
+            /*RightWall = false;
+            Debug.Log("noright");*/
             playerpos = transform.position;
         }
         else
         {
             RightWall = true;
             Debug.Log("right");
-            LeftWall = false;
-            Debug.Log("noleft");
+            /*LeftWall = false;
+            Debug.Log("noleft");*/
             playerpos = transform.position;
         }
         
@@ -143,12 +153,12 @@ public class PlayerController : MonoBehaviour,IPlayer
             isJumping = true;
         }
         
-        if(RightWall && transform.position.x != playerpos.x)
+        if(RightWall/* && transform.position.x != playerpos.x*/)
         {
             RightWall = false;
             Debug.Log("noright");
         }
-        if (LeftWall && transform.position.x != playerpos.x)
+        if (LeftWall/* && transform.position.x != playerpos.x*/)
         {
             LeftWall = false;
             Debug.Log("noleft");
