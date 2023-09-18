@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class CloseOption : MonoBehaviour
 {
     [SerializeField] GameObject optionTab;
+    [SerializeField] AudioType type;
     [SerializeField] private Button button;
 
     // Start is called before the first frame update
@@ -16,6 +17,7 @@ public class CloseOption : MonoBehaviour
 
     private void ClosePanel()
     {
+        SoundManager.Instance.PlaySE(type);
         optionTab.SetActive(false);
     }
 }
