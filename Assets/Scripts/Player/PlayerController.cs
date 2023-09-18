@@ -106,24 +106,6 @@ public class PlayerController : MonoBehaviour,IPlayer
         playerAnimator.SetBool(PlayerAnimatorFrag.IsFalling.ToString(),isFalling);
         playerAnimator.SetBool(PlayerAnimatorFrag.IsIdle.ToString(),isIdle);
     }
-
-    private bool SetIsFalling()
-    {
-        if (!isJumping)
-        {
-            beforeFramePosition = transform.position;
-            return false;
-        }
-
-        if (transform.position.y <= beforeFramePosition.y)
-        {
-            beforeFramePosition = transform.position;
-            return true;
-        }
-
-        beforeFramePosition = transform.position;
-        return false;
-    }
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -176,6 +158,7 @@ public class PlayerController : MonoBehaviour,IPlayer
     public void Jump()
     {
         rigidbody.AddForce(new Vector2(0, 1000));
+        SoundManager.Instance.PlaySE(AudioType.jump);
     }
     
     public void Heal(int value = 1)

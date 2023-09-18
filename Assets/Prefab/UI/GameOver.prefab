@@ -215,6 +215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageName: 
+  type: 1
 --- !u!1 &5390808333547105674
 GameObject:
   m_ObjectHideFlags: 0
@@ -756,3 +757,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageName: StageSelectScene
+  type: 1

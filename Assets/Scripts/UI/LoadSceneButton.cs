@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class LoadSceneButton : MonoBehaviour
 {
     [SerializeField] string stageName;
+    [SerializeField] AudioType type;
     private Button button;
 
     // Start is called before the first frame update
@@ -18,7 +19,7 @@ public class LoadSceneButton : MonoBehaviour
 
     private void LoadScene()
     {
-        SoundManager.Instance.PlaySE();
+        SoundManager.Instance.PlaySE(type);
         Invoke("Load", 0.8f);
     }
 

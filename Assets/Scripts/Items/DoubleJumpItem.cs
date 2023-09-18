@@ -25,6 +25,7 @@ namespace Items
         public void InfluenceThePlayer(IPlayer player)
         {
             player.IncreasePossibleDoubleJumpCount(doubleJumpCount);
+            SoundManager.Instance.PlaySE(AudioType.item);
         }
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class OptionButton : MonoBehaviour
 {
     [SerializeField] GameObject optionTab;
+    [SerializeField] AudioType type;
     private Button button;
 
     // Start is called before the first frame update
@@ -18,6 +19,7 @@ public class OptionButton : MonoBehaviour
 
     private void OnOptionPanel()
     {
+        SoundManager.Instance.PlaySE(type);
         optionTab.SetActive(true);
     }
 }
