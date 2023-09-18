@@ -25,6 +25,7 @@ namespace Items
         public void InfluenceThePlayer(IPlayer player)
         {
             player.Heal(healValue);
+            SoundManager.Instance.PlaySE(AudioType.item);
         }
     }
 }
