@@ -635,3 +635,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageName: StageSelectScene
+  type: 1
