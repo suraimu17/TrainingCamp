@@ -551,6 +551,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   optionTab: {fileID: 1807505006}
+  type: 1
   button: {fileID: 959268741}
 --- !u!1 &475636809
 GameObject:
@@ -1390,6 +1391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   optionTab: {fileID: 1807505006}
+  type: 1
 --- !u!114 &1295558205
 MonoBehaviour:
   m_ObjectHideFlags: 0
